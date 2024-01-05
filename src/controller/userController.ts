@@ -15,7 +15,7 @@ const pool = new Pool({
 
 const userService = new UserService(pool);
 const userRouter: Router = express.Router();
-console.log(process.env.USERNAME);
+
 userRouter.get("/id/:id", async (req: Request, res: Response) => {
   const id: string = req.params.id;
   try {

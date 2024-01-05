@@ -8,7 +8,6 @@ configDotenv({ path: envPath });
 const app = express();
 const port = 3000;
 
-console.log(process.env.DB_USER);
 app.use("/user", userRouter);
 
 app.listen(port, () => {
