@@ -17,4 +17,12 @@ userRouter.get(
     }
   }
 );
+userRouter.get("/email/:email", async (req:Request, res: Response, next:NextFunction) =>{
+  try{
+    const user = await userService.getUserByEmail(req.params.email);
+    res.status(200).json({status : "sucess", data: {user}});
+  } catch (error : any){
+    next(error);
+  }
+})
 export default userRouter;
