@@ -2,6 +2,7 @@ import UserNotFoundError from "../exceptions/UserNotFound.js";
 import { User } from "../models/User.js";
 import { Pool } from "pg";
 import * as UserRepository from "../repository/UserRepository.js";
+import { UserRequest } from "../request/UserRequest.js";
 class UserService {
   private readonly pool: Pool;
   private readonly userRepo: typeof UserRepository;
@@ -21,6 +22,11 @@ class UserService {
     if(!userRow) throw new UserNotFoundError();
     const user: User = userRow as User;
     return user;
+  }
+  async createUser(user : UserRequest):Promise<string>{
+    const userRow = await this.userRepo.createUser(user);
+    if(!userRow){}; //UserNotCreated 
+    return "User Created Successfully"; //change this to something more meaningful
   }
 }
 

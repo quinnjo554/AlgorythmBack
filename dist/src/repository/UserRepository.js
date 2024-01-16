@@ -16,13 +16,20 @@ export function findUserById(id) {
 }
 export function findUsernameByEmail(email) {
     return __awaiter(this, void 0, void 0, function* () {
-        const result = yield pool.query("SELECT username FROM users WHERE email = $1", [email]);
+        const result = yield pool.query("SELECT * FROM users WHERE email = $1", [email]);
         return result.rows[0];
     });
 }
 export function findByUsername(username) {
     return __awaiter(this, void 0, void 0, function* () {
         const result = yield pool.query("SELECT * FROM users WHERE username = $1", [username]);
+        return result.rows[0];
+    });
+}
+export function createUser(user) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { userName, email, profileurl } = user;
+        const result = yield pool.query("INSERT INTO users (userName, email, profileurl) VALUES ($1, $2, $3) RETURNING *", [userName, email, profileurl]);
         return result.rows[0];
     });
 }

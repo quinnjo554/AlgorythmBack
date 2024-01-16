@@ -30,5 +30,15 @@ userRouter.get("/email/:email", (req, res, next) => __awaiter(void 0, void 0, vo
         next(error);
     }
 }));
+userRouter.post("/create", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userMade = req.body;
+        const response = yield userService.createUser(userMade);
+        res.status(200).json({ status: response });
+    }
+    catch (error) {
+        next(error);
+    }
+}));
 export default userRouter;
 //# sourceMappingURL=UserController.js.map

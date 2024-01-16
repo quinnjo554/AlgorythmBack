@@ -32,6 +32,14 @@ class UserService {
             return user;
         });
     }
+    createUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const userRow = yield this.userRepo.createUser(user);
+            if (!userRow)
+                throw new UserNotFoundError();
+            return "Created User with id " + userRow.userid;
+        });
+    }
 }
 export default UserService;
 //# sourceMappingURL=UserService.js.map

@@ -9,8 +9,8 @@ const port = 3001;
 
 setupDatabase();
 app.use(errorHandler);
+app.use(express.json());
 app.use("/user", userRouter);
-console.log(process.env.DB_USER);
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);
 });
