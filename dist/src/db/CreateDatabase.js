@@ -19,6 +19,7 @@ export function setupDatabase() {
         yield createCodeAnswer();
         yield createNote();
         yield createEnrolledIn();
+        yield createUserProgress();
     });
 }
 function createUserTable() {
@@ -151,6 +152,26 @@ function createCodeAnswer() {
       )
     `);
             console.log("CodeAnswers table created successfully.");
+        }
+        catch (err) {
+            console.error("Error setting up database:", err);
+        }
+    });
+}
+function createUserProgress() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield pool.query(`
+      CREATE TABLE IF NOT EXISTS UserProgress (
+        progressID SERIAL PRIMARY KEY,
+        userID INT,
+        lessonID INT,
+        progress INT,
+        FOREIGN KEY (userID) REFERENCES Users(userID),
+        FOREIGN KEY (lessonID) REFERENCES Lessons(lessonID)
+      )
+    `);
+            console.log("UserProgress table created successfully.");
         }
         catch (err) {
             console.error("Error setting up database:", err);

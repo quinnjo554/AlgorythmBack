@@ -9,6 +9,7 @@ export async function setupDatabase() {
   await createCodeAnswer();
   await createNote();
   await createEnrolledIn();
+  await createUserProgress();
 }
 
 async function createUserTable() {
@@ -128,6 +129,23 @@ async function createCodeAnswer() {
       )
     `);
     console.log("CodeAnswers table created successfully.");
+  } catch (err) {
+    console.error("Error setting up database:", err);
+  }
+}
+async function createUserProgress() {
+  try {
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS UserProgress (
+        progressID SERIAL PRIMARY KEY,
+        userID INT,
+        lessonID INT,
+        progress INT,
+        FOREIGN KEY (userID) REFERENCES Users(userID),
+        FOREIGN KEY (lessonID) REFERENCES Lessons(lessonID)
+      )
+    `);
+    console.log("UserProgress table created successfully.");
   } catch (err) {
     console.error("Error setting up database:", err);
   }

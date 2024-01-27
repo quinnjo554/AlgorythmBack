@@ -32,9 +32,9 @@ userRouter.get("/email/:email", (req, res, next) => __awaiter(void 0, void 0, vo
 }));
 userRouter.post("/create", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const userMade = req.body;
-        const response = yield userService.createUser(userMade);
-        res.status(200).json({ status: response });
+        const userToAdd = req.body;
+        const response = yield userService.createUser(userToAdd);
+        res.status(200).json({ status: "success", data: { response } });
     }
     catch (error) {
         next(error);
