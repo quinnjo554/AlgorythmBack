@@ -45,13 +45,12 @@ function createCourse() {
         try {
             yield pool.query(`
       CREATE TABLE IF NOT EXISTS Courses (
-        courseID SERIAL PRIMARY KEY,
-        courseName VARCHAR(100) NOT NULL,
-        courseDescription VARCHAR(400) NOT NULL,
-        courseSubject VARCHAR(100) NOT NULL,
-        userID INT,
-        FOREIGN KEY (userID) REFERENCES Users(userID)
-      )
+  courseID SERIAL PRIMARY KEY,
+  courseName VARCHAR(100) NOT NULL,
+  courseDescription VARCHAR(400) NOT NULL,
+  courseSubject VARCHAR(100) NOT NULL,
+  courseDifficulty VARCHAR(100) NOT NULL
+)
     `);
             console.log("Courses table created successfully.");
         }
@@ -65,13 +64,14 @@ function createLesson() {
         try {
             yield pool.query(`
       CREATE TABLE IF NOT EXISTS Lessons (
-        lessonID SERIAL PRIMARY KEY,
-        lessonName VARCHAR(100) NOT NULL,
-        imageUrl VARCHAR(355),
-        gifURL VARCHAR(355),
-        courseID INT,
-        FOREIGN KEY (courseID) REFERENCES Courses(courseID)
-      )
+  lessonID SERIAL PRIMARY KEY,
+  lessonName VARCHAR(100) NOT NULL,
+  lessonDescription VARCHAR(3000), 
+  imageUrl VARCHAR(355),
+  gifURL VARCHAR(355),
+  courseID INT,
+  FOREIGN KEY (courseID) REFERENCES Courses(courseID)
+)
     `);
             console.log("Lessons table created successfully.");
         }
@@ -162,14 +162,14 @@ function createUserProgress() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield pool.query(`
-      CREATE TABLE IF NOT EXISTS UserProgress (
-        progressID SERIAL PRIMARY KEY,
-        userID INT,
-        lessonID INT,
-        progress INT,
-        FOREIGN KEY (userID) REFERENCES Users(userID),
-        FOREIGN KEY (lessonID) REFERENCES Lessons(lessonID)
-      )
+     CREATE TABLE IF NOT EXISTS UserProgress (
+     progressID SERIAL PRIMARY KEY,
+     userID INT,
+     courseID INT,
+     progress INT,
+     FOREIGN KEY (userID) REFERENCES Users(userID),
+     FOREIGN KEY (courseID) REFERENCES Courses(courseID)
+     )
     `);
             console.log("UserProgress table created successfully.");
         }

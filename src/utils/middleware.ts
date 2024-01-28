@@ -1,5 +1,5 @@
 import { InternalServerError } from "../exceptions/InternalServerError.js";
-import UserNotFoundError from "../exceptions/UserNotFound.js";
+import UserNotFoundError from "../exceptions/UserErrors/UserNotFound.js";
 import { Request, Response, NextFunction } from "express";
 
 export function errorHandler(
@@ -11,6 +11,6 @@ export function errorHandler(
   if (err instanceof UserNotFoundError) {
     res.status(404).json({ message: err.message });
   } else if (err instanceof InternalServerError) {
-    res.status(500).json({ message: "Balls message" });
+    res.status(500).json({ message: "Undefined Error message" });
   }
 }

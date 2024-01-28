@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import UserNotFoundError from "../exceptions/UserNotFound.js";
+import UserNotFoundError from "../exceptions/UserErrors/UserNotFound.js";
 import * as UserRepository from "../repository/UserRepository.js";
 class UserService {
     constructor(pool) {
