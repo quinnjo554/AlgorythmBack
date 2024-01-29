@@ -1,0 +1,1 @@
+{"version":3,"file":"CourseNotFound.js","sourceRoot":"","sources":["../../../../src/exceptions/CourseErrors/CourseNotFound.ts"],"names":[],"mappings":"AAAA,MAAM,mBAAoB,SAAQ,KAAK;IACrC,YAAY,OAAgB;QAC1B,KAAK,CAAC,OAAO,IAAI,kBAAkB,CAAC,CAAC;QACrC,IAAI,CAAC,IAAI,GAAG,qBAAqB,CAAC;IACpC,CAAC;CACF;AAED,eAAe,mBAAmB,CAAC"}

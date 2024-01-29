@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 // __tests__/UserService.test.ts
 import UserService from "../src/service/UserService.js";
 import * as UserRepository from "../src/repository/UserRepository.js";
-import UserNotFoundError from "../src/exceptions/UserNotFound.js";
+import UserNotFoundError from "../src/exceptions/UserErrors/UserNotFound.js";
 import { Pool } from "pg";
 describe("UserService", () => {
     let pool;

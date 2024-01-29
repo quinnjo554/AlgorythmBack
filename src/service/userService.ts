@@ -1,4 +1,4 @@
-import UserNotFoundError from "../exceptions/UserNotFound.js";
+import UserNotFoundError from "../exceptions/UserErrors/UserNotFound.js";
 import { User } from "../models/User.js";
 import { Pool } from "pg";
 import * as UserRepository from "../repository/UserRepository.js";
