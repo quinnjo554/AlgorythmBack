@@ -7,28 +7,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import CourseService from "../service/CourseService.js";
+import LessonService from "../service/LessonService.js";
 import express from "express";
 import pool from "../db/DatabaseConnection.js";
-const courseService = new CourseService(pool);
-const courseRouter = express.Router();
-courseRouter.get("/id/:id", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const lessonService = new LessonService(pool);
+const lessonRouter = express.Router();
+lessonRouter.get("/id/:id", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const course = yield courseService.getCoursesByUserId(parseInt(req.params.id));
-        res.status(200).json({ status: "success", data: { course } });
+        const lesson = yield lessonService.getCoursesByUserId(parseInt(req.params.id));
+        res.status(200).json({ status: "success", data: { lessons: lesson } });
     }
     catch (error) {
         next(error);
     }
 }));
-courseRouter.get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const course = yield courseService.getAllCourses();
-        res.status(200).json({ status: "success", data: { course } });
-    }
-    catch (error) {
-        next(error);
-    }
-}));
-export default courseRouter;
-//# sourceMappingURL=CourseController.js.map
+export default lessonRouter;
+//# sourceMappingURL=LessonController.js.map

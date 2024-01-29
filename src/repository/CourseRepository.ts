@@ -1,6 +1,5 @@
 import { QueryResult } from "pg";
 import { Course } from "../models/Course.js";
-import { UserRequest } from "../request/UserRequest.js";
 import pool from "../db/DatabaseConnection.js";
 
 export async function findAllCoursesByUserId(id: number): Promise<Course[] | undefined> {
