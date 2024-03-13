@@ -7,23 +7,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import * as LessonRepository from "../repository/LessonRepository.js";
-import LessonNotFound from "../exceptions/LessonErrors/LessonNotFound.js";
-class LessonService {
+import * as CodeRepository from "../repository/CodeRepository.js";
+import CourseNotFoundError from "../exceptions/CourseErrors/CourseNotFound.js";
+class CodeService {
     constructor(pool) {
         this.pool = pool;
-        this.lessonRepo = LessonRepository;
+        this.codeRepo = CodeRepository;
     }
-    getCoursesByUserId(lessonid) {
+    getQuestionsAndAnswersByLessonId(codeId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const lessonRow = yield this.lessonRepo.findAllLessonsByCourseId(lessonid);
-            if (!lessonRow)
-                throw new LessonNotFound();
-            const lesson = lessonRow;
-            lesson.sort((a, b) => a.lessonid - b.lessonid); //sort because first lesson will have smallest id 
-            return lesson;
+            const codeRow = yield this.codeRepo.findAllQuestionsAndAnswersByLessonId(codeId);
+            if (!codeRow)
+                throw new CourseNotFoundError();
+            const code = codeRow;
+            return code;
         });
     }
 }
-export default LessonService;
-//# sourceMappingURL=LessonService.js.map
+export default CodeService;
+//# sourceMappingURL=CodeService.js.map

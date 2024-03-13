@@ -70,6 +70,7 @@ function createLesson() {
   imageUrl VARCHAR(355),
   gifURL VARCHAR(355),
   courseID INT,
+  lessontype VARCHAR(255) CHECK (lessontype IN ('visual', 'img', 'code')),
   FOREIGN KEY (courseID) REFERENCES Courses(courseID)
 )
     `);

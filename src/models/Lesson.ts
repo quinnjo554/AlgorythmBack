@@ -4,5 +4,6 @@ export interface Lesson{
     lessondescription:string,
     imageurl:string,
     gifurl:number,
+    lessontype:string,
     courseid:number
 }
